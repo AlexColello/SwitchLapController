@@ -12,32 +12,19 @@ set(PICO_EXAMPLES_PATH ${PROJECT_SOURCE_DIR})
 # Initialize the SDK
 pico_sdk_init()
 
-include(example_auto_set_url.cmake)
-# Add blink example
-add_subdirectory(blink)
+add_executable(controller
+        controller.c
+        )
 
-# Add hello world example
-add_subdirectory(hello_world)
+pico_set_program_name(controller "controller")
+pico_set_program_version(controller "0.1")
 
-# Hardware-specific examples in subdirectories:
-add_subdirectory(adc)
-add_subdirectory(clocks)
-add_subdirectory(cmake)
-add_subdirectory(divider)
-add_subdirectory(dma)
-add_subdirectory(flash)
-add_subdirectory(gpio)
-add_subdirectory(i2c)
-add_subdirectory(interp)
-add_subdirectory(multicore)
-add_subdirectory(picoboard)
-add_subdirectory(pio)
-add_subdirectory(pwm)
-add_subdirectory(reset)
-add_subdirectory(rtc)
-add_subdirectory(spi)
-add_subdirectory(system)
-add_subdirectory(timer)
-add_subdirectory(uart)
-add_subdirectory(usb)
-add_subdirectory(watchdog)
+pico_enable_stdio_uart(controller 1)
+pico_enable_stdio_usb(controller 0)
+
+# Pull in our (to be renamed) simple get you started dependencies
+target_link_libraries(controller pico_stdlib hardware_i2c)
+
+# create map/bin/hex file etc.
+pico_add_extra_outputs(controller)
+
