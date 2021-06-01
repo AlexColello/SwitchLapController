@@ -19,8 +19,8 @@ add_executable(controller
 pico_set_program_name(controller "controller")
 pico_set_program_version(controller "0.1")
 
-pico_enable_stdio_uart(controller 1)
-pico_enable_stdio_usb(controller 0)
+pico_enable_stdio_uart(controller 0)
+pico_enable_stdio_usb(controller 1)
 
 # Pull in our (to be renamed) simple get you started dependencies
 target_link_libraries(controller pico_stdlib hardware_i2c)
