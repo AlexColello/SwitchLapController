@@ -18,6 +18,7 @@ cd ..
 git clone https://github.com/kripton/RF24
 cd RF24
 git switch kripton-rp2xxx
+cd ..
 
 cp pico-sdk/external/pico_sdk_import.cmake ..
 
